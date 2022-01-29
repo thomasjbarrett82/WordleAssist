@@ -38,16 +38,16 @@ namespace WordleAssist {
 
             // filter ListOfWords
             // exclude gray letters
-            char[] grayLetters = Gray.Text.ToCharArray();
+            char[] grayLetters = Gray.Text.ToLower().ToCharArray();
             var validWords = ListOfWords.Where(w => !grayLetters.Any(w.Contains)).ToList();
 
             // filter only green letters
             var greenLetters = new List<string> { 
-                Green1.Text,
-                Green2.Text,
-                Green3.Text,
-                Green4.Text,
-                Green5.Text
+                Green1.Text.ToLower(),
+                Green2.Text.ToLower(),
+                Green3.Text.ToLower(),
+                Green4.Text.ToLower(),
+                Green5.Text.ToLower()
             };
             foreach (var letter in greenLetters) {
                 if (string.IsNullOrWhiteSpace(letter.ToString()))
@@ -58,11 +58,11 @@ namespace WordleAssist {
 
             // filter down to yellow letters, but not in the location
             List<char[]> yellowFields = new List<char[]> {
-                Yellow1.Text.ToCharArray(),
-                Yellow2.Text.ToCharArray(),
-                Yellow3.Text.ToCharArray(),
-                Yellow4.Text.ToCharArray(),
-                Yellow5.Text.ToCharArray(),
+                Yellow1.Text.ToLower().ToCharArray(),
+                Yellow2.Text.ToLower().ToCharArray(),
+                Yellow3.Text.ToLower().ToCharArray(),
+                Yellow4.Text.ToLower().ToCharArray(),
+                Yellow5.Text.ToLower().ToCharArray(),
             };
             foreach (var field in yellowFields) {
                 var index = yellowFields.IndexOf(field);
